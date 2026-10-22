@@ -1,0 +1,24 @@
+Mode: built-in image_gen image editing (background-extraction)
+The PNG outputs are integrated into the game without resampling or loss of their generated alpha.
+
+RED TAXI
+Edit target: /workspace/scratch/49d5cc24f195/upload/小车红1(9).png
+
+Use case: background-extraction.
+Asset type: transparent PNG game-piece cutout for the existing HONG KONG ON THE METER website.
+Input image 1 is the exact EDIT TARGET, not a design inspiration. Precisely remove only the surrounding solid black backdrop from this taxi model image. Preserve the entire physical taxi silhouette and all of its existing details. Most important: retain BOTH full black rubber tires and their dark sidewalls, both silver wheel hubs, the dark undercarriage, the black front grille, complete front and rear black bumpers, mirrors, windows, handles and all narrow edges. Dark vehicle parts are foreground, never background; no holes or missing chunks in them.
+Keep the SAME model identity, roof sign, original TAXI and 的士 lettering, exact three-quarter view looking toward the lower left, body proportions, color, surface texture and lighting. Do not redesign, recolor or add anything to the taxi. Remove the ground/backdrop and any cast ground shadow only. Output actual transparent alpha, not a checkerboard pattern, not a white or black background. Keep soft antialiased clean outer edges with no black rectangular remnants or fringe.
+Composition: a single complete vehicle tightly framed in a landscape canvas around 4:3 (or close to its original physical silhouette ratio), with only a small transparent safety margin. Nothing clipped, especially the bottom of the nearest front tire and outer edge of the rear tire.
+This is the RED Hong Kong taxi. Retain the same red paint, white roof, black rubber wheels, black bumpers and original lettering exactly.
+
+
+BLUE TAXI
+Edit target: /workspace/scratch/49d5cc24f195/upload/小车蓝1(9).png
+
+Use case: background-extraction.
+Asset type: transparent PNG game-piece cutout for the existing HONG KONG ON THE METER website.
+Input image 1 is the exact EDIT TARGET, not a design inspiration. Precisely remove only the surrounding solid black backdrop from this taxi model image. Preserve the entire physical taxi silhouette and all of its existing details. Most important: retain BOTH full black rubber tires and their dark sidewalls, both silver wheel hubs, the dark undercarriage, the black front grille, complete front and rear black bumpers, mirrors, windows, handles and all narrow edges. Dark vehicle parts are foreground, never background; no holes or missing chunks in them.
+Keep the SAME model identity, roof sign, original TAXI and 的士 lettering, exact three-quarter view looking toward the lower left, body proportions, color, surface texture and lighting. Do not redesign, recolor or add anything to the taxi. Remove the ground/backdrop and any cast ground shadow only. Output actual transparent alpha, not a checkerboard pattern, not a white or black background. Keep soft antialiased clean outer edges with no black rectangular remnants or fringe.
+Composition: a single complete vehicle tightly framed in a landscape canvas around 4:3 (or close to its original physical silhouette ratio), with only a small transparent safety margin. Nothing clipped, especially the bottom of the nearest front tire and outer edge of the rear tire.
+This is the BLUE Hong Kong taxi. Retain the same bright blue paint, white roof, black rubber wheels, black bumpers and original lettering exactly.
+

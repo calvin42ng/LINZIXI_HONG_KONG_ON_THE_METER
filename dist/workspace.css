@@ -1,0 +1,379 @@
+/* The play surface fits the viewport; reference material lives in dialogs. */
+html { height: 100%; }
+body.play-workspace { height: 100vh; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+.play-workspace .site-header { flex: 0 0 66px; height: 66px; min-height: 0; padding: 9px 18px; gap: 16px; }
+.play-workspace .brand { width: 144px; }
+.play-workspace .site-header nav { flex-shrink: 0; gap: 13px; }
+.play-workspace .site-header nav button { font-size: 10px; padding: 5px 0; }
+.play-workspace .site-header nav button span { font-size: 8px; margin-top: 3px; }
+.play-workspace .site-header nav .icon-button { width: 30px; height: 30px; padding: 0; font-size: 17px; }
+.play-workspace .site-header nav .button { min-height: 35px; padding: 7px 10px; gap: 14px; }
+.play-workspace .site-header nav .button span { margin: 0; color: inherit; font-size: 10px; font-weight: 700; }
+.play-workspace .players-strip { flex: 1; min-width: 0; gap: 5px; padding: 0; overflow: visible; justify-content: center; }
+.play-workspace .player-chip { flex: 1; min-width: 0; max-width: 170px; gap: 6px; padding: 6px; border-radius: 5px; }
+.play-workspace .player-letter { width: 23px; height: 23px; min-width: 23px; font-size: 10px; }
+.play-workspace .player-chip > div:nth-child(2) { flex: 1; min-width: 0; }
+.play-workspace .player-chip strong { font-size: 9px; max-width: none; white-space: nowrap; }
+.play-workspace .player-chip small { font-size: 7px; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.play-workspace .player-chip .player-coins { font-size: 17px; margin-left: auto; }
+.play-workspace .player-chip .player-coins small { font-size: 6px; letter-spacing: 0; }
+.play-workspace main { flex: 1; width: 100%; max-width: 1900px; min-height: 0; margin: 0 auto; padding: 0 16px 14px; display: flex; flex-direction: column; gap: 8px; }
+.play-workspace .session-bar { flex: 0 0 44px; min-height: 0; padding: 0 2px; border: 0; gap: 16px; }
+.play-workspace .ready-label { flex-wrap: wrap; gap: 6px; max-width: 32%; font-size: 11px; }
+.play-workspace .ready-label > span:last-child { width: 100%; margin: -2px 0 0 12px; font-size: 8px; }
+.play-workspace .session-right { gap: 10px; margin-left: auto; }
+.play-workspace .timer { font-size: 15px; white-space: nowrap; }
+.play-workspace .trip-progress { display: flex; align-items: center; justify-content: center; gap: 13px; padding: 0; margin: 0; }
+.play-workspace .trip-progress li { font-size: 8px; letter-spacing: 0; padding: 6px 0; line-height: 1.2; white-space: nowrap; }
+.play-workspace .trip-progress b { font-size: 9px; margin-right: 4px; }
+.play-workspace .game-layout { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0,1fr) clamp(220px,23vw,330px) clamp(245px,23vw,300px); gap: 12px; align-items: stretch; }
+.play-workspace .board-panel { min-width: 0; min-height: 0; padding: 0; display: flex; flex-direction: column; }
+.play-workspace .board-panel .panel-top { flex-shrink: 0; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 11px 12px 6px; gap: 6px 12px; }
+.play-workspace .panel-caption { font-size: 9px; letter-spacing: .8px; }
+.play-workspace .map-view-tabs { width: auto; gap: 1px; justify-content: flex-end; margin-left: auto; }
+.play-workspace .map-view-tabs button { font-size: 9px; padding: 6px; }
+.play-workspace .display-fit { flex: 1; min-height: 0; min-width: 0; display: grid; place-items: center; padding: 6px 12px 0; }
+.play-workspace .display-shell { flex: none; max-width: none; margin: 0; }
+.play-workspace .map-status { top: 10px; left: 10px; max-width: 86%; font-size: 9px; padding: 7px 8px; }
+.play-workspace .display-shell .map-help { bottom: 10px; left: 10px; font-size: 8px; padding: 5px 7px; }
+.play-workspace .display-caption { flex-shrink: 0; padding: 6px 12px; gap: 6px; letter-spacing: .6px; }
+.play-workspace .display-caption > span { font-size: 7px; }
+.play-workspace .display-caption b { font-size: 8px; margin-top: 3px; }
+.play-workspace .display-caption > div { gap: 4px; }
+.play-workspace .display-caption button { min-height: 30px; font-size: 9px; padding: 6px; }
+.play-workspace .board-bottom { flex-shrink: 0; flex-wrap: nowrap; padding: 6px 12px 11px; gap: 8px; }
+.play-workspace .map-legend { gap: 5px 10px; }
+.play-workspace .map-legend > span { font-size: 8px; }
+.play-workspace .hint-button { min-height: 28px; font-size: 9px; }
+.play-workspace .physical-meter-card { min-width: 0; min-height: 0; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; margin: 0; }
+.play-workspace .meter-heading { flex-shrink: 0; min-height: 27px; flex-wrap: wrap; gap: 5px; }
+.play-workspace .meter-heading .eyebrow { font-size: 8px; letter-spacing: 1px; }
+.play-workspace #phase-pill { font-size: 7px; padding: 5px 6px; }
+.play-workspace .meter-stage { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 4px 0 36px; margin: 4px 0 0; }
+.play-workspace .meter-device { flex: none; max-width: none; margin: 0; }
+.play-workspace .roll-allowance { flex-shrink: 0; font-size: 8px; padding: 7px 4px; margin: 0 0 6px; letter-spacing: .45px; }
+.play-workspace .meter-live-label { flex-shrink: 0; font-size: 8px; letter-spacing: .65px; line-height: 1.5; margin: 0 0 8px; }
+.play-workspace .meter-readouts { flex-shrink: 0; padding: 9px 4px; }
+.play-workspace .meter-readouts span { font-size: 7px; margin-bottom: 4px; letter-spacing: .6px; }
+.play-workspace .meter-readouts b { font-size: 27px; }
+.play-workspace .meter-card-counts { flex-shrink: 0; font-size: 8px; gap: 4px; margin: 9px 0 0; }
+.play-workspace .meter-footer { flex-shrink: 0; margin: 9px 0 0; padding-top: 8px; font-size: 7px; letter-spacing: .2px; }
+.play-workspace .meter-footer > span { overflow-wrap: anywhere; }
+.play-workspace .dashboard { min-width: 0; min-height: 0; gap: 0; }
+.play-workspace #active-dashboard { height: 100%; min-height: 0; display: flex; flex-direction: column; gap: 10px; }
+.play-workspace .order-card { flex-shrink: 0; margin: 0; padding: 13px; }
+.play-workspace .trip-stops { display: block; margin: 14px 0; }
+.play-workspace .trip-stops:before { display: block; }
+.play-workspace .trip-stop { gap: 9px; }
+.play-workspace .trip-stop + .trip-stop { margin-top: 13px; }
+.play-workspace .trip-stop small { font-size: 8px; margin-bottom: 3px; letter-spacing: .5px; }
+.play-workspace .trip-stop strong { font-size: 12px; }
+.play-workspace .trip-stop em { font-size: 9px; margin-top: 3px; }
+.play-workspace .fare-strip { padding-top: 9px; gap: 8px; justify-content: space-between; }
+.play-workspace .fare-strip > span { font-size: 7px; letter-spacing: .3px; }
+.play-workspace .fare-strip b { font-size: 20px; margin-top: 4px; }
+.play-workspace .fare-note { font-size: 8px; line-height: 1.5; margin-top: 7px; }
+.play-workspace .taxi-mini { gap: 8px; margin: 10px 0 0; padding-top: 9px; border-top: 1px solid var(--line); }
+.play-workspace .taxi-mini img { width: 61px; height: 43px; }
+.play-workspace .taxi-mini strong { font-size: 10px; }
+.play-workspace .taxi-mini small { font-size: 8px; line-height: 1.5; margin-top: 4px; color: #78866f; }
+.play-workspace .taxi-awaiting-mark { width: 36px; height: 36px; font-size: 21px; color: #a58c46; border-color: #c5cfb8; }
+.play-workspace .turn-controls { flex-shrink: 0; padding: 13px; border: 1px solid var(--line); border-radius: 7px; background: #f9faf3; }
+.play-workspace .turn-help { border: 1px solid #cdd7c1; border-radius: 50%; width: 23px; height: 23px; margin: -4px -3px -4px auto; font-size: 11px; }
+.play-workspace .phase-instruction { min-height: 0; margin: 11px 0 0; font-size: 11px; line-height: 1.6; color: #586c52; }
+.play-workspace .phase-instruction strong { color: var(--forest); }
+.play-workspace .meter-action { width: 100%; min-height: 40px; padding: 10px 12px; font-size: 11px; margin-top: 12px; }
+.play-workspace .drive-tray { flex-direction: column; align-items: stretch; gap: 10px; padding: 10px 0 0; margin-top: 10px; background: none; }
+.play-workspace .drive-tray > div:first-child { max-width: none; }
+.play-workspace .drive-tray .eyebrow { font-size: 7px; letter-spacing: .7px; }
+.play-workspace .drive-tray p { font-size: 9px; line-height: 1.5; margin-top: 5px; }
+.play-workspace .direction-buttons { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px; }
+.play-workspace .direction-button { min-width: 0; min-height: 43px; text-align: left; font-size: 11px; padding: 7px 8px; }
+.play-workspace .direction-button span { font-size: 8px; margin-top: 3px; }
+.play-workspace .transfer-choices { margin-top: 10px; }
+.play-workspace .transfer-choices button { padding: 6px 3px; color: var(--forest); border-color: #b8c5ad; background: var(--white); }
+.play-workspace .transfer-choices img { height: 36px; }
+.play-workspace .transfer-choices b { font-size: 8px; }
+.play-workspace .transfer-choices small { font-size: 6px; }
+.play-workspace .last-roll-result { flex-shrink: 0; display: grid; grid-template-columns: 29px minmax(0,1fr); gap: 5px 8px; padding: 10px; margin: 0; }
+.play-workspace .roll-result-number { width: 29px; height: 31px; font-size: 20px; }
+.play-workspace .last-roll-result > div:nth-child(2) { min-width: 0; }
+.play-workspace .last-roll-result small { font-size: 7px; letter-spacing: .5px; }
+.play-workspace .last-roll-result strong { font-size: 10px; line-height: 1.4; margin: 4px 0; }
+.play-workspace .last-roll-result p { font-size: 9px; line-height: 1.45; }
+.play-workspace .last-roll-result > span { grid-column: 2; min-width: 0; width: auto; margin: 0; text-align: left; font-size: 7px; line-height: 1.5; }
+.play-workspace .last-roll-result > span br { display: none; }
+.play-workspace .last-roll-result > span b { font-size: 9px; margin-left: 6px; }
+.play-workspace .welcome-card { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 23px 20px 17px; }
+.play-workspace .welcome-card .eyebrow { font-size: 8px; line-height: 1.5; letter-spacing: 1.3px; }
+.play-workspace .welcome-card h2 { font-size: clamp(32px,3vw,43px); margin: 20px 0 15px; }
+.play-workspace .welcome-card p { font-size: 11px; line-height: 1.7; }
+.play-workspace .welcome-how { display: grid; grid-template-columns: 24px 1fr; gap: 14px 9px; align-items: start; margin: auto 0; padding: 25px 0; }
+.play-workspace .welcome-how > span { font-size: 9px; color: #e6c97e; padding-top: 3px; font-family: ui-monospace,monospace; }
+.play-workspace .welcome-card .button { margin: 0; min-height: 44px; padding: 12px; font-size: 11px; }
+.play-workspace .welcome-card .resume-button { padding-top: 12px; font-size: 10px; }
+.play-workspace .welcome-foot { margin-top: 17px; font-size: 7px; letter-spacing: 1px; }
+.play-workspace dialog { max-height: calc(100dvh - 32px); overflow-y: auto; overscroll-behavior: contain; }
+.play-workspace .journal-list { display: grid; gap: 0; margin-top: 20px; }
+.play-workspace .journal-list .log-entry { padding: 13px 0; font-size: 12px; line-height: 1.7; border-bottom: 1px solid var(--line); }
+.play-workspace #original-map-surface { position: relative; overflow: hidden; flex-shrink: 0; }
+.play-workspace .original-map-preview { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; pointer-events: none; user-select: none; }
+.play-workspace #original-native-tiles img { position: absolute; max-width: none; pointer-events: none; user-select: none; }
+
+@media (max-width: 1200px) {
+ .play-workspace .site-header { gap: 12px; padding-inline: 14px; }
+ .play-workspace .brand { width: 120px; }
+ .play-workspace .site-header nav { gap: 10px; }
+ .play-workspace .player-chip > div:nth-child(2) { display: none; }
+ .play-workspace .player-chip { max-width: 95px; }
+ .play-workspace .game-layout { grid-template-columns: minmax(0,1fr) 24% 27%; gap: 10px; }
+ .play-workspace .board-panel .panel-top { flex-direction: column; align-items: flex-start; }
+ .play-workspace .map-view-tabs { margin: 0; justify-content: flex-start; }
+ .play-workspace .display-caption { flex-direction: column; align-items: stretch; }
+ .play-workspace .display-caption > span { display: flex; align-items: center; justify-content: space-between; }
+ .play-workspace .display-caption b { margin: 0; }
+ .play-workspace .display-caption > div { justify-content: space-between; }
+ .play-workspace .display-caption button { flex: 1; }
+ .play-workspace .board-bottom { align-items: flex-end; }
+ .play-workspace .ready-label { font-size: 10px; max-width: 28%; }
+ .play-workspace .trip-progress { gap: 9px; }
+ .play-workspace .trip-progress li { font-size: 7px; }
+ .play-workspace .meter-heading { align-content: center; }
+ .play-workspace #phase-pill { padding: 4px; font-size: 6px; }
+}
+
+@media (max-height: 780px) {
+ .play-workspace .site-header { flex-basis: 58px; height: 58px; }
+ .play-workspace main { padding-bottom: 10px; gap: 5px; }
+ .play-workspace .session-bar { flex-basis: 39px; }
+ .play-workspace .physical-meter-card { padding: 10px; }
+ .play-workspace .meter-stage { padding-bottom: 30px; margin-top: 0; }
+ .play-workspace .meter-readouts { padding: 7px 3px; }
+ .play-workspace .meter-readouts b { font-size: 24px; }
+ .play-workspace .meter-footer { margin-top: 7px; padding-top: 6px; }
+ .play-workspace .order-card, .play-workspace .turn-controls { padding: 10px; }
+ .play-workspace #active-dashboard { gap: 8px; }
+ .play-workspace .trip-stops { margin: 10px 0; }
+ .play-workspace .trip-stop + .trip-stop { margin-top: 9px; }
+ .play-workspace .trip-stop strong { font-size: 11px; }
+ .play-workspace .taxi-mini { margin-top: 7px; padding-top: 6px; }
+ .play-workspace .taxi-mini img { height: 35px; width: 52px; }
+ .play-workspace .phase-instruction { font-size: 10px; line-height: 1.5; margin-top: 9px; }
+ .play-workspace .last-roll-result { padding: 8px; gap: 3px 7px; }
+ .play-workspace .last-roll-result p { font-size: 8px; }
+ .play-workspace .welcome-card { padding: 19px 16px 15px; }
+ .play-workspace .welcome-card h2 { margin: 15px 0 12px; font-size: 34px; }
+ .play-workspace .welcome-how { padding: 20px 0; gap: 13px 8px; }
+}
+
+@media (max-width: 900px) and (min-width: 701px) {
+ .play-workspace .brand { width: 105px; }
+ .play-workspace .site-header nav { gap: 7px; }
+ .play-workspace .site-header nav button span { display: none; }
+ .play-workspace .site-header nav .button span { display: inline; }
+ .play-workspace .site-header nav .button { gap: 7px; }
+ .play-workspace .player-chip .player-coins small { display: none; }
+ .play-workspace .player-chip { padding: 5px 4px; gap: 3px; }
+ .play-workspace .player-letter { min-width: 18px; width: 18px; height: 22px; }
+ .play-workspace .player-chip .player-coins { font-size: 13px; }
+ .play-workspace main { padding-inline: 10px; }
+ .play-workspace .game-layout { grid-template-columns: minmax(0,1fr) 23% 30%; gap: 7px; }
+ .play-workspace .trip-progress { gap: 6px; }
+ .play-workspace .trip-progress li { font-size: 0; }
+ .play-workspace .trip-progress li.active { font-size: 8px; }
+ .play-workspace .trip-progress b { font-size: 9px; }
+ .play-workspace .display-caption > span, .play-workspace .map-legend { display: none; }
+ .play-workspace .board-bottom { padding-top: 0; justify-content: flex-end; }
+ .play-workspace .map-view-tabs button { font-size: 8px; padding: 4px; }
+ .play-workspace .meter-heading .eyebrow { font-size: 6px; }
+ .play-workspace .meter-footer { flex-direction: column; gap: 2px; }
+ .play-workspace .meter-footer > span:last-child { max-width: none; text-align: left; }
+ .play-workspace .meter-live-label, .play-workspace .roll-allowance { font-size: 7px; }
+ .play-workspace .meter-readouts span { font-size: 6px; letter-spacing: 0; }
+ .play-workspace .meter-card-counts { font-size: 6px; }
+}
+
+/* Portrait devices keep the map above the meter and its adjacent controls. */
+@media (max-width: 700px) {
+ .play-workspace .site-header { flex: 0 0 84px; height: 84px; padding: 6px 10px; gap: 4px 10px; flex-wrap: wrap; }
+ .play-workspace .brand { width: 91px; }
+ .play-workspace .site-header nav { margin-left: auto; gap: 9px; }
+ .play-workspace .site-header nav button { font-size: 9px; }
+ .play-workspace .site-header nav button span { display: none; }
+ .play-workspace .site-header nav .button { min-height: 28px; padding: 4px 7px; gap: 5px; }
+ .play-workspace .site-header nav .button span { display: none; }
+ .play-workspace .site-header nav .icon-button { width: 25px; height: 25px; font-size: 14px; }
+ .play-workspace .players-strip { order: 3; flex: 0 0 100%; gap: 4px; }
+ .play-workspace .players-strip[hidden] { display: none !important; }
+ .play-workspace .player-chip { max-width: none; padding: 3px 5px; gap: 4px; }
+ .play-workspace .player-letter { width: 17px; height: 17px; min-width: 17px; font-size: 8px; }
+ .play-workspace .player-chip .player-coins { font-size: 13px; }
+ .play-workspace .player-chip .player-coins small { display: none; }
+ .play-workspace main { padding: 0 8px 8px; gap: 4px; }
+ .play-workspace .session-bar { flex: 0 0 32px; gap: 5px; }
+ .play-workspace .ready-label { max-width: 58%; font-size: 10px; gap: 5px; }
+ .play-workspace .ready-label > span:last-child { display: none; }
+ .play-workspace .session-right { gap: 8px; }
+ .play-workspace .timer { font-size: 12px; }
+ .play-workspace .trip-progress { gap: 3px; margin-left: auto; }
+ .play-workspace .trip-progress li { font-size: 0; padding: 4px 0; }
+ .play-workspace .trip-progress b { font-size: 8px; margin: 0 2px; }
+ .play-workspace .game-layout { grid-template-columns: 42% minmax(0,1fr); grid-template-rows: minmax(0,.9fr) minmax(0,1.1fr); gap: 7px; }
+ .play-workspace .board-panel { grid-column: 1 / -1; }
+ .play-workspace .board-panel .panel-top { flex-direction: row; flex-wrap: nowrap; padding: 5px 8px 0; gap: 4px; }
+ .play-workspace .board-panel .panel-caption { font-size: 7px; letter-spacing: .2px; }
+ .play-workspace .map-view-tabs { margin-left: auto; gap: 0; flex-wrap: nowrap; }
+ .play-workspace .map-view-tabs button { font-size: 7px; padding: 4px; }
+ .play-workspace .display-fit { padding: 0 4px; }
+ .play-workspace .display-caption { padding: 2px 8px 4px; }
+ .play-workspace .display-caption > span, .play-workspace .board-bottom { display: none; }
+ .play-workspace .display-caption > div { justify-content: center; }
+ .play-workspace .display-caption button { flex: 0 1 auto; min-height: 24px; font-size: 8px; padding: 4px 8px; }
+ .play-workspace .map-status { font-size: 7px; top: 5px; left: 5px; padding: 4px; }
+ .play-workspace .display-shell .map-help { display: none; }
+ .play-workspace .physical-meter-card { padding: 7px; }
+ .play-workspace .meter-heading { min-height: 16px; }
+ .play-workspace .meter-heading .eyebrow { font-size: 6px; letter-spacing: .4px; }
+ .play-workspace #phase-pill { font-size: 6px; padding: 3px; }
+ .play-workspace .meter-stage { padding: 0 0 15px; margin: 2px 0 0; }
+ .play-workspace .roll-allowance { padding: 4px 2px; margin-bottom: 4px; font-size: 6px; }
+ .play-workspace .meter-live-label { font-size: 6px; margin-bottom: 4px; letter-spacing: .2px; }
+ .play-workspace .meter-readouts { padding: 4px 1px; }
+ .play-workspace .meter-readouts span { font-size: 5px; letter-spacing: 0; margin-bottom: 2px; }
+ .play-workspace .meter-readouts b { font-size: 19px; }
+ .play-workspace .meter-card-counts { margin-top: 5px; font-size: 6px; }
+ .play-workspace .meter-footer { display: none; }
+ .play-workspace #active-dashboard { gap: 5px; }
+ .play-workspace .order-card, .play-workspace .turn-controls { padding: 7px; }
+ .play-workspace .panel-caption { font-size: 7px; letter-spacing: .5px; }
+ .play-workspace .panel-caption > span:first-child { font-size: 8px; }
+ .play-workspace .trip-stops { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0; }
+ .play-workspace .trip-stops:before { display: none; }
+ .play-workspace .trip-stop { gap: 5px; }
+ .play-workspace .trip-stop + .trip-stop { margin: 0; }
+ .play-workspace .trip-dot { width: 6px; height: 6px; flex-shrink: 0; margin-top: 3px; }
+ .play-workspace .trip-stop small { font-size: 6px; letter-spacing: 0; }
+ .play-workspace .trip-stop strong { font-size: 9px; }
+ .play-workspace .trip-stop em { font-size: 7px; }
+ .play-workspace .fare-strip { padding-top: 5px; gap: 5px; }
+ .play-workspace .fare-strip > span { font-size: 5px; }
+ .play-workspace .fare-strip b { font-size: 16px; margin-top: 2px; }
+ .play-workspace .fare-note { display: none; }
+ .play-workspace .taxi-mini { padding-top: 4px; margin-top: 5px; gap: 5px; }
+ .play-workspace .taxi-mini img { width: 36px; height: 25px; }
+ .play-workspace .taxi-awaiting-mark { width: 23px; height: 23px; font-size: 15px; }
+ .play-workspace .taxi-mini strong { font-size: 8px; }
+ .play-workspace .taxi-mini small { font-size: 6px; margin-top: 2px; }
+ .play-workspace .phase-instruction { font-size: 8px; line-height: 1.45; margin-top: 6px; }
+ .play-workspace .turn-help { width: 19px; height: 19px; font-size: 9px; }
+ .play-workspace .meter-action { min-height: 31px; padding: 7px; font-size: 9px; margin-top: 7px; }
+ .play-workspace .drive-tray { gap: 5px; margin-top: 5px; padding-top: 5px; }
+ .play-workspace .drive-tray > div:first-child { display: none; }
+ .play-workspace .direction-buttons { gap: 4px; }
+ .play-workspace .direction-button { min-height: 31px; font-size: 9px; padding: 5px; }
+ .play-workspace .direction-button span { font-size: 6px; margin-top: 2px; }
+ .play-workspace .last-roll-result { padding: 6px; grid-template-columns: 22px minmax(0,1fr); gap: 3px 5px; }
+ .play-workspace .roll-result-number { width: 22px; height: 25px; font-size: 16px; }
+ .play-workspace .last-roll-result small { font-size: 6px; }
+ .play-workspace .last-roll-result strong { font-size: 8px; margin: 2px 0; }
+ .play-workspace .last-roll-result p { font-size: 7px; line-height: 1.4; }
+ .play-workspace .last-roll-result > span { display: none; }
+ .play-workspace .transfer-choices { gap: 3px; margin-top: 6px; }
+ .play-workspace .transfer-choices img { height: 23px; }
+ .play-workspace .transfer-choices b { font-size: 6px; }
+ .play-workspace .transfer-choices small { display: none; }
+ .play-workspace .welcome-card { padding: 12px; }
+ .play-workspace .welcome-card h2 { font-size: 28px; margin: 10px 0; }
+ .play-workspace .welcome-card .eyebrow { font-size: 6px; letter-spacing: .7px; }
+ .play-workspace .welcome-card p { font-size: 9px; line-height: 1.5; }
+ .play-workspace .welcome-how { gap: 8px 5px; padding: 12px 0; grid-template-columns: 19px 1fr; }
+ .play-workspace .welcome-how > span { font-size: 8px; }
+ .play-workspace .welcome-card .button { min-height: 34px; font-size: 9px; padding: 8px; }
+ .play-workspace .welcome-card .resume-button { font-size: 8px; padding-top: 8px; }
+ .play-workspace .welcome-foot { font-size: 5px; margin-top: 9px; }
+}
+
+@media (max-height: 650px) and (min-width: 701px) {
+ .play-workspace .site-header { flex-basis: 50px; height: 50px; padding-block: 5px; }
+ .play-workspace .session-bar { flex-basis: 32px; }
+ .play-workspace main { padding-bottom: 8px; }
+ .play-workspace .order-card, .play-workspace .turn-controls { padding: 8px; }
+ .play-workspace .trip-stops { margin: 8px 0; }
+ .play-workspace .trip-stop + .trip-stop { margin-top: 7px; }
+ .play-workspace .trip-stop em { margin-top: 2px; font-size: 8px; }
+ .play-workspace .fare-strip { padding-top: 6px; }
+ .play-workspace .fare-strip b { font-size: 17px; margin-top: 3px; }
+ .play-workspace .fare-note { margin-top: 4px; font-size: 7px; }
+ .play-workspace .taxi-mini { margin-top: 5px; padding-top: 5px; }
+ .play-workspace .taxi-mini img { height: 28px; width: 43px; }
+ .play-workspace .taxi-mini small { font-size: 7px; margin-top: 2px; }
+ .play-workspace .phase-instruction { font-size: 9px; line-height: 1.45; margin-top: 7px; }
+ .play-workspace .meter-action { min-height: 34px; margin-top: 8px; padding: 8px; font-size: 10px; }
+ .play-workspace .last-roll-result { padding: 6px; }
+ .play-workspace .last-roll-result strong { font-size: 9px; margin: 2px 0; }
+ .play-workspace .last-roll-result p { font-size: 8px; }
+ .play-workspace .drive-tray { margin-top: 7px; padding-top: 7px; gap: 7px; }
+ .play-workspace .drive-tray > div:first-child { display: none; }
+ .play-workspace .direction-button { min-height: 34px; padding: 5px 7px; font-size: 10px; }
+ .play-workspace .direction-button span { font-size: 7px; margin-top: 2px; }
+ .play-workspace .welcome-card { padding: 14px; }
+ .play-workspace .welcome-card h2 { font-size: 30px; margin: 12px 0 10px; }
+ .play-workspace .welcome-card p { font-size: 10px; }
+ .play-workspace .welcome-how { padding: 15px 0; gap: 9px 7px; }
+ .play-workspace .welcome-foot { margin-top: 11px; }
+}
+
+/* Short landscape windows put the order beside the turn controls. */
+@media (max-height: 500px) and (min-width: 701px) {
+ .play-workspace .site-header { flex-basis: 44px; height: 44px; }
+ .play-workspace .session-bar { flex-basis: 29px; }
+ .play-workspace .game-layout { grid-template-columns: minmax(170px,1fr) minmax(125px,.65fr) minmax(155px,.76fr) minmax(175px,.83fr); }
+ .play-workspace .dashboard, .play-workspace #active-dashboard { display: contents; }
+ .play-workspace .order-card { grid-column: 3; grid-row: 1; }
+ .play-workspace .turn-controls { grid-column: 4; grid-row: 1; align-self: start; }
+ .play-workspace .last-roll-result { grid-column: 4; grid-row: 1; align-self: end; }
+ .play-workspace .board-panel .panel-top { padding: 6px 6px 0; }
+ .play-workspace .board-panel .panel-caption { font-size: 7px; letter-spacing: .4px; }
+ .play-workspace .map-view-tabs { gap: 0; }
+ .play-workspace .map-view-tabs button { font-size: 7px; padding: 3px; }
+ .play-workspace .display-fit { padding: 0 4px; }
+ .play-workspace .display-caption { padding: 3px 5px; }
+ .play-workspace .display-caption button { min-height: 23px; font-size: 7px; padding: 4px 2px; }
+ .play-workspace .board-bottom { padding: 0 5px 5px; }
+ .play-workspace .hint-button { min-height: 22px; padding: 4px; font-size: 7px; }
+ .play-workspace .map-status { font-size: 7px; top: 5px; left: 5px; padding: 4px; }
+ .play-workspace .display-shell .map-help { display: none; }
+ .play-workspace .physical-meter-card { padding: 7px; }
+ .play-workspace .meter-heading { min-height: 18px; }
+ .play-workspace .meter-heading .eyebrow { font-size: 6px; letter-spacing: .4px; }
+ .play-workspace #phase-pill { font-size: 5px; padding: 3px; }
+ .play-workspace .meter-stage { padding: 0 0 16px; margin: 1px 0 0; }
+ .play-workspace .roll-allowance { font-size: 6px; padding: 4px 2px; margin-bottom: 4px; }
+ .play-workspace .meter-live-label { font-size: 6px; margin-bottom: 4px; }
+ .play-workspace .meter-readouts { padding: 4px 1px; }
+ .play-workspace .meter-readouts span { font-size: 5px; margin-bottom: 2px; }
+ .play-workspace .meter-readouts b { font-size: 19px; }
+ .play-workspace .meter-card-counts { font-size: 6px; margin-top: 5px; }
+ .play-workspace .meter-footer { display: none; }
+ .play-workspace .trip-stop strong { font-size: 10px; }
+ .play-workspace .taxi-mini { gap: 5px; }
+ .play-workspace .taxi-mini img { width: 35px; height: 28px; }
+ .play-workspace .taxi-mini strong { font-size: 8px; }
+ .play-workspace .taxi-mini small { font-size: 6px; }
+ .play-workspace .taxi-awaiting-mark { width: 25px; height: 25px; font-size: 17px; }
+ .play-workspace .phase-instruction { font-size: 9px; line-height: 1.4; }
+ .play-workspace .drive-tray { padding-top: 6px; margin-top: 6px; }
+ .play-workspace .direction-button { font-size: 9px; padding: 5px; }
+ .play-workspace .last-roll-result { grid-template-columns: 22px minmax(0,1fr); gap: 3px 5px; }
+ .play-workspace .roll-result-number { width: 22px; height: 25px; font-size: 17px; }
+ .play-workspace .last-roll-result p { font-size: 7px; }
+ .play-workspace .last-roll-result > span { display: none; }
+ .play-workspace .welcome-card { grid-column: 3 / -1; grid-row: 1; padding: 12px; }
+ .play-workspace .welcome-card h2 { font-size: 26px; margin: 9px 0; }
+ .play-workspace .welcome-card h2 br { display: none; }
+ .play-workspace .welcome-card p { font-size: 10px; line-height: 1.5; }
+ .play-workspace .welcome-how { display: none; }
+ .play-workspace .welcome-card .button { min-height: 36px; margin-top: auto; padding: 9px; }
+ .play-workspace .welcome-card .resume-button { padding-top: 8px; font-size: 9px; }
+ .play-workspace .welcome-foot { margin-top: 10px; }
+}

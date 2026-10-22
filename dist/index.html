@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#103f32">
+<title>HONG KONG ON THE METER — Play the city</title>
+<meta name="description" content="A playable journey through Hong Kong taxi culture. Roll the meter, explore the original illustrated map, draw event cards, and take your passengers home.">
+<link rel="icon" href="assets/logo.png"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="workspace.css">
+</head>
+<body class="play-workspace">
+<header class="site-header">
+ <a class="brand" href="#" aria-label="Hong Kong On The Meter home"><img src="assets/logo.png" alt="HONG KONG ON THE METER"></a>
+ <div id="players-strip" class="players-strip" hidden aria-label="Players and scores"></div>
+ <nav aria-label="Main navigation"><button data-open="rules">Rules<span>遊戲規則</span></button><button data-open="cards">Cards<span>卡牌圖鑑</span></button><button data-open="journal">Journal<span>行車日誌</span></button><button class="icon-button" data-open="story" aria-label="Behind the game" title="About the project">i</button><button class="icon-button" id="sound-btn" aria-label="Turn sound on" title="Sound">♪</button><button class="icon-button" id="fullscreen-btn" aria-label="Enter full screen" title="Full screen · 全屏">⛶</button><button class="button forest" id="new-shift-top" aria-label="Start a new shift"><span>New shift</span><b>＋</b></button></nav>
+</header>
+<main id="play">
+ <h1 class="sr-only">HONG KONG ON THE METER — Play the city</h1>
+ <div class="session-bar" id="session-bar"><div class="ready-label"><span class="live-dot"></span><strong>Your shift starts here.</strong><span>1–6 players · One roll per turn</span></div><ol id="trip-progress" class="trip-progress" aria-label="Order steps"></ol><div class="session-right"><button id="pause-btn" class="text-button" hidden>Pause</button><span class="timer" id="timer">60:00</span></div></div>
+ <section class="game-layout" aria-label="Interactive taxi board game">
+  <section class="board-panel" aria-label="Map and display controls">
+   <div class="panel-top"><div class="panel-caption"><span>01</span> EXPLORE THE CITY</div><div class="map-view-tabs" id="map-tabs" aria-label="Map districts"><button data-view="all" class="selected">All Hong Kong</button><button data-view="islands">Islands</button><button data-view="nt">New Territories</button><button data-view="kowloon">Kowloon</button><button data-view="hk">HK Island</button></div></div>
+<div class="display-fit">   <div class="display-shell" id="display-shell"><img class="display-hardware" src="assets/screen.webp" alt="Your original flexible map display, shown straight-on with power, zoom, confirm and cancel controls"><div class="map-viewport" id="map-viewport">
+    <svg id="map-svg" viewBox="-300 -30 2200 1660" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Original illustrated Hong Kong game map. Zoom and drag freely. The map finds each active taxi automatically; select highlighted neighboring stops to drive."><defs><filter id="shadow"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity=".25"/></filter></defs><image href="assets/map-original.png" width="1600" height="1600"/><g id="map-detail-layer" aria-hidden="true" pointer-events="none"></g><g id="map-layer"></g></svg>
+    <div class="map-status"><span class="live-dot"></span><span id="map-status-text">Four districts. One unforgettable shift.</span></div>
+    <div class="map-welcome" id="map-welcome"><span>TAKE THE SCENIC ROUTE</span><strong>Hong Kong,<br>one fare at a time.</strong><p>Your original illustrated city,<br>ready to be explored.</p></div>
+
+    <div class="map-help">Drag to explore <span>·</span> Scroll to zoom</div>
+    <div class="map-tooltip" id="map-tooltip" hidden></div>
+   </div>
+   <div class="screen-hotspots"><button id="screen-power" aria-label="Display power: start or pause" title="Power · Start / pause"></button><button id="zoom-out" aria-label="Display zoom out" title="Zoom out · 縮小"></button><button id="zoom-in" aria-label="Display zoom in" title="Zoom in · 放大"></button><button id="screen-confirm" aria-label="Keep current map view" title="Keep view · 確定視圖"></button><button id="screen-cancel" aria-label="Cancel manual map view changes" title="Undo view changes · 取消視圖調整"></button></div>
+   </div>
+</div>
+   <div class="display-caption"><span>ORIGINAL FLEXIBLE DISPLAY <b>54 stops · 35 transfer zones</b></span><div><button id="fit-map">Overview ⛶</button><button id="locate">My taxi ⌖</button><button id="original-map" title="7680 × 7680 · 原始像素">Original pixels ↗</button></div></div>
+   <div class="board-bottom"><div class="map-legend"><span><i class="yellow"></i>Pickup / drop-off</span><span><i class="red"></i>Road event</span><span><i class="green"></i>Service event</span><span><i class="purple"></i>Taxi transfer</span></div><button id="hint-btn" class="hint-button" aria-pressed="false">↝ Route hint</button></div>
+
+  </section>
+<section class="meter-card physical-meter-card"><div class="meter-heading"><span class="eyebrow light">02 / METER & CARDS</span><span id="phase-pill">VACANT · 空車</span></div>
+     <div class="meter-stage"><div class="meter-device" id="meter-device">
+      <img class="meter-body" src="assets/meter-body.webp" alt="Original taxi meter and red/green card dispenser">
+      <button class="meter-sign" id="meter-sign" disabled aria-label="Tap 空車 VACANT sign to roll the dice" title="拍空車 · Tap VACANT to roll"><img src="assets/meter-vacant.webp" alt="空車 VACANT"></button>
+      <svg class="meter-led" viewBox="0 0 1014 1200" aria-hidden="true"><polygon points="383,552 729,514 740,633 389,674" fill="#19211e"/><text x="570" y="641" text-anchor="middle" fill="#f04b43" font-family="monospace" font-size="132" transform="rotate(-7 570 641)" id="dice-number">—</text></svg>
+      <button class="meter-hotspot red-hotspot" id="meter-red" disabled aria-label="Press the meter red-card button" title="紅卡 · Red card"></button>
+      <button class="meter-hotspot green-hotspot" id="meter-green" disabled aria-label="Press the meter green-card button" title="綠卡 · Green card"></button>
+      <span class="player-light" id="player-light" aria-hidden="true"></span>
+      <img id="ejected-card" class="ejected-card" aria-hidden="true" src="assets/red-back.webp" alt="Card emerging from the original meter">
+     </div></div>
+     <div class="roll-allowance" id="roll-allowance">ONE ROLL PER TURN</div>
+     <div class="meter-live-label" id="meter-label">START A SHIFT · THEN TAP 空車 / VACANT</div>
+     <div class="meter-readouts"><div><span>LOCKED D</span><b id="locked-steps">—</b></div><div><span>DRIVEN</span><b id="driven-steps">0</b></div><div><span>STEPS LEFT</span><b id="steps-number">0</b></div></div>
+     <div class="meter-card-counts"><span>RED <b id="red-count">0/2</b></span><span id="point-number">POINT —</span><span>GREEN <b id="green-count">0/2</b></span></div>
+     <div class="meter-footer"><span id="current-player">PLAYER A</span><span id="taxi-range">YOUR CITY. YOUR SHIFT.</span></div>
+    </section>
+<aside class="dashboard" aria-label="Order and turn controls"><section class="welcome-card" id="welcome-card"><div class="eyebrow">YOUR CITY. YOUR SHIFT.</div><h2>Take the<br> driver’s seat.</h2><p>Explore Hong Kong with your original taxi models, map display and meter.</p><div class="welcome-how"><span>01</span><p>Get a pick-up and destination.</p><span>02</span><p>Tap <b>空車 / VACANT</b> once per turn.</p><span>03</span><p>Drive, draw cards and deliver.</p></div><button class="button gold" id="start-main">Start your shift <b>↗</b></button><button class="resume-button" id="resume-btn" hidden>↻ Continue saved shift</button><div class="welcome-foot"><span>1–6 PLAYERS</span><span>60 MIN · 原版</span></div></section><div id="active-dashboard" hidden><section class="order-card"><div class="panel-caption"><span>03</span> YOUR ORDER <span class="order-number" id="order-number">#001</span></div><div class="trip-stops" id="trip-stops"></div><div class="fare-strip"><span>BASE FARE <b id="base-fare">—</b></span><span>FIRST TAXI <b id="taxi-bonus">—</b></span><span>CARDS <b id="card-rewards">+0</b></span></div><div class="fare-note">Shortest legal steps × 5. Detours add no fare.</div><div id="taxi-mini" class="taxi-mini"></div></section><section class="turn-controls"><div class="panel-caption"><span>04</span> YOUR TURN <button class="turn-help" data-open="rules" aria-label="Open full game rules">?</button></div><div id="phase-instruction" class="phase-instruction"></div>   <div class="drive-tray" id="drive-tray" hidden><div><span class="eyebrow">CHOOSE YOUR NEXT STOP</span><p id="drive-note">Click a glowing stop on the map.</p></div><div id="direction-buttons" class="direction-buttons"></div></div>
+<button class="button gold meter-action" id="meter-action">Confirm order →</button><div class="transfer-choices" id="transfer-choices" hidden></div></section><section id="last-roll-result" class="last-roll-result" hidden aria-live="polite"></section><p id="culture-note" class="sr-only"></p></div></aside>
+ </section>
+</main>
+<dialog id="setup-dialog" class="setup-dialog"><button class="dialog-close" data-close aria-label="Close setup">×</button><div class="eyebrow">A NEW SHIFT · 新一趟旅程</div><h2>Who’s at the wheel?</h2><p>Play solo, or take turns on the same device.</p><form id="setup-form"><fieldset><legend>Drivers <span>玩家人數</span></legend><div class="segmented" id="player-count"><button type="button" data-count="1" class="selected">Solo</button><button type="button" data-count="2">2</button><button type="button" data-count="3">3</button><button type="button" data-count="4">4</button><button type="button" data-count="5">5</button><button type="button" data-count="6">6</button></div></fieldset><div id="name-inputs" class="name-inputs"></div><fieldset><legend>Shift length <span>遊戲時間</span></legend><div class="segmented" id="duration-choice"><button type="button" data-duration="15">15 min</button><button type="button" data-duration="30">30 min</button><button type="button" data-duration="60" class="selected">60 min <small>Original</small></button></div></fieldset><div class="setup-note">Start with 0 coins. Each player rolls once per turn, including taxi draws. A failed draw places no taxi and passes immediately. A valid draw places the taxi; driving waits for that player’s next turn. Pending orders stay saved. Card rolls wait until the next turn. At time-up, follow the shortest legal route; no new cards. Most net coins wins, then most completed orders. Progress saves on this device.</div><p class="replace-note" id="replace-note" hidden>Starting a new shift replaces the saved game on this device.</p><button class="button forest wide" type="submit">Start the meter <b>↗</b></button></form></dialog>
+<dialog id="content-dialog" class="content-dialog"><button class="dialog-close" data-close aria-label="Close panel">×</button><div id="content-body"></div></dialog>
+<dialog id="event-dialog" class="event-dialog"><div id="event-body"></div></dialog>
+<dialog id="confirm-dialog" class="small-dialog"><div class="eyebrow">START FRESH?</div><h2>A new shift awaits.</h2><p>Your current shift will be replaced after you choose your new settings.</p><div class="dialog-actions"><button class="button outline" data-close>Keep playing</button><button class="button forest" id="confirm-new">Choose settings ↗</button></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div><div class="sr-only" aria-live="polite" id="announcer"></div>
+<script type="module" src="app.js"></script>
+</body></html>
